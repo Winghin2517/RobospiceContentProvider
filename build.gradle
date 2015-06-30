@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.1.0'
+    }
+}
+
+apply plugin: 'android'
+
+repositories{
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.octo.android.robospice:robospice-spring-android:1.4.11'
+    /*    compile 'com.tojc.ormlite.android:ormlite-content-provider-library:1.0.4'*/
+    /*    compile 'com.tojc.ormlite.android:ormlite-content-provider-compiler:1.0.3'*/
+    compile 'com.octo.android.robospice:robospice-ormlite:1.4.11'
+    compile 'com.squareup:javawriter:2.5.1'
+
+
+    /*    compile 'com.octo.android.robospice:robospice-ormlite-content-provider:1.4.12'*/
+    compile('org.simpleframework:simple-xml:2.7') {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax'
+        exclude group: 'stax', module: 'stax-api'
+    }
+    compile project(':ormlitecontentproviderlibrary')
+    compile files('libs/ormlite-content-provider-compiler-1.0.3.jar')
+}
+
+android {
+    buildToolsVersion "22.0.1"
+    compileSdkVersion 19
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
